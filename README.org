@@ -1,0 +1,10 @@
+* counsel-jq
+
+<e
+{ "foo":"bar" }
+
+- Call =counsel-jq= on this region
+
+** TODOs
+
+- [ ] Make the need for switching go away. Then the minibuffer will stay in focus and all is good.
