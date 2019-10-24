@@ -5,7 +5,12 @@
 
 (defun jq-json (&optional query)
   "Call 'jq' with the QUERY with a default of '.'."
-  (save-excursion
+  (with-current-buffer
+      ;; The user entered the `counsel-jq` query in the minibuffer.
+      ;; This expression uses the most recent other buffer (see
+      ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/Switching-Buffers.html#fnd-2).
+      (other-buffer (current-buffer) t)
+    (message (concat "current buffer: " (buffer-name)))
     (call-process-region
      (point-min)
      (point-max)
@@ -16,23 +21,16 @@
      "-M"
      (or query "."))))
 
-(defun switch-to-minibuffer ()
-  "Switch to minibuffer window."
-  (if (active-minibuffer-window)
-      (select-window (active-minibuffer-window))))
-
 (defun counsel-jq-query-function (input)
   "Wrapper function passing INPUT over to jq-json."
-  (save-excursion
-    (switch-to-buffer "*jq-json*")
-    (erase-buffer)
-    (switch-to-buffer (other-buffer))
-    (jq-json input)
-    (switch-to-buffer "*jq-json*")
-    (let ((s (split-string (buffer-string)  "\n")))
-      (switch-to-buffer (other-buffer))
-      (switch-to-minibuffer)
-      s)))
+  (message (concat "initial buffer: " (buffer-name)))
+  (if (get-buffer "*jq-json*")
+      (with-current-buffer "*jq-json*"
+        (erase-buffer)))
+  (jq-json input)
+  (split-string
+   (with-current-buffer "*jq-json*"
+     (buffer-string))  "\n"))
 
 (defun counsel-jq ()
   "Counsel interface for dynamically querying jq."
