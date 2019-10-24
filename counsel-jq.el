@@ -35,7 +35,7 @@
 (defun counsel-jq ()
   "Counsel interface for dynamically querying jq."
   (interactive)
-  (ivy-read "search: " #'counsel-jq-query-function
+  (ivy-read "jq query: " #'counsel-jq-query-function
             :action '(1
                       ("s" (lambda (x)
                              (split-window-below)
