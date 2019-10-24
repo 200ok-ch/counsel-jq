@@ -1,10 +1,13 @@
 * counsel-jq
 
-<e
-{ "foo":"bar" }
+If you're a fan of [[https://stedolan.github.io/jq/][jq]] and you're using Emacs [[https://github.com/abo-abo/swiper][ivy/swiper/counsel]], then
+this package is for you.
 
-- Call =counsel-jq= on this region
+With it, you can quickly test queries and traverse a complex JSON
+structure whilst having live feedback. Whenever you're happy, hit
+=RET= and the results will be displayed to you in a buffer
+=*jq-json*=.
 
-** TODOs
+Demo:
 
-- [ ] Make the need for switching go away. Then the minibuffer will stay in focus and all is good.
+[[file:images/demo-counsel-jq.gif][./images/demo-counsel-jq.gif]]
