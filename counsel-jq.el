@@ -13,21 +13,19 @@
 (defun switch-to-minibuffer ()
   "Switch to minibuffer window."
   (if (active-minibuffer-window)
-      (select-window (active-minibuffer-window))
-    (error "Minibuffer is not active"))) 
+      (select-window (active-minibuffer-window))))
 
 
 (defun counsel-search-function (input)
-  (progn
+  (save-excursion
     (switch-to-buffer "*jq-json*")
     (erase-buffer)
     (switch-to-buffer (other-buffer))
     (jq-json input)
     (switch-to-buffer "*jq-json*")
     (let ((s (split-string (buffer-string)  "\n")))
-      ;; TODO: Fix the switching needs here
-      ;; Otherwise there's no focus on the minibuffer
       (switch-to-buffer (other-buffer))
+      (switch-to-minibuffer)
       s)))
 
 (defun counsel-jq ()
@@ -36,7 +34,9 @@
   (ivy-read "search: " #'counsel-search-function
             :action '(1
                       ("s" (lambda (x)
-                             (message x) "show")))
+                             (split-window-below) 
+                             (switch-to-buffer "*jq-json*"))
+                             "show"))
             :initial-input "."
             :dynamic-collection t
-            :caller 'counsel-jq)) 
+            :caller 'counsel-jq))  
