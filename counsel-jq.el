@@ -10,7 +10,6 @@
       ;; This expression uses the most recent other buffer (see
       ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/Switching-Buffers.html#fnd-2).
       (other-buffer (current-buffer) t)
-    (message (concat "current buffer: " (buffer-name)))
     (call-process-region
      (point-min)
      (point-max)
@@ -23,7 +22,6 @@
 
 (defun counsel-jq-query-function (input)
   "Wrapper function passing INPUT over to jq-json."
-  (message (concat "initial buffer: " (buffer-name)))
   (if (get-buffer "*jq-json*")
       (with-current-buffer "*jq-json*"
         (erase-buffer)))
