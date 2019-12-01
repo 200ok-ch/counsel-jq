@@ -37,7 +37,7 @@
 
 ;;;###autoload
 (defun counsel-jq ()
-  "Counsel interface for dynamically querying jq."
+  "Counsel interface for dynamically querying jq. Whenever you're happy with the query, hit RET and the results will be displayed to you in the buffer *jq-json*."
   (interactive)
   (ivy-read "jq query: " #'counsel-jq-query-function
             :action #'(1
