@@ -35,6 +35,7 @@
    (with-current-buffer "*jq-json*"
      (buffer-string))  "\n"))
 
+;;;###autoload
 (defun counsel-jq ()
   "Counsel interface for dynamically querying jq."
   (interactive)
