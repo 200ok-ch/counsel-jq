@@ -5,7 +5,7 @@ this package is for you.
 
 With it, you can quickly test queries and traverse a complex JSON
 structure whilst having live feedback. Whenever you're happy, hit
-=RET= and the results will be displayed to you in a buffer
+=RET= and the results will be displayed to you in the buffer
 =*jq-json*=.
 
 Demo:

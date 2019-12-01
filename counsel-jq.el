@@ -1,4 +1,4 @@
-;;; counsel-jq.el --- Live preview of "jq" queries using counsel. -*- lexical-binding: t; -*-
+;;; counsel-jq.el --- Live preview of "jq" queries using counsel -*- lexical-binding: t -*-
 ;;; Version: 1.0.0
 ;;; Author: Alain M. Lafon <alain@200ok.ch)
 ;;; Package-Requires: ((swiper "0.12.0") (emacs "24.1"))
