@@ -1,5 +1,7 @@
 * counsel-jq
 
+[[https://melpa.org/#/counsel-jq][file:https://melpa.org/packages/counsel-jq-badge.svg]]
+
 If you're a fan of [[https://stedolan.github.io/jq/][jq]] and you're using Emacs [[https://github.com/abo-abo/swiper][ivy/swiper/counsel]], then
 this package is for you.
 
