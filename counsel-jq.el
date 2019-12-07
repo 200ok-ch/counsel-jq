@@ -1,7 +1,7 @@
 ;;; counsel-jq.el --- Live preview of "jq" queries using counsel -*- lexical-binding: t -*-
 ;;; Version: 1.0.0
 ;;; Author: Alain M. Lafon <alain@200ok.ch)
-;;; Package-Requires: ((ivy "0.12.0") (emacs "24.1"))
+;;; Package-Requires: ((swiper "0.12.0") (ivy "0.12.0") (emacs "24.1"))
 ;;; Keywords: convenience, data, matching
 ;;; URL: https://github.com/200ok-ch/counsel-jq
 ;;; Commentary:
