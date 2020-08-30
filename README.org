@@ -2,13 +2,26 @@
 
 [[https://melpa.org/#/counsel-jq][file:https://melpa.org/packages/counsel-jq-badge.svg]]
 
-If you're a fan of [[https://stedolan.github.io/jq/][jq]] and you're using Emacs [[https://github.com/abo-abo/swiper][ivy/swiper/counsel]], then
-this package is for you.
+TL;DR: If you're a fan of [[https://stedolan.github.io/jq/][jq]] and you're using Emacs
+[[https://github.com/abo-abo/swiper][Ivy/Swiper/Counsel]], then this package is for you.
 
-With it, you can quickly test queries and traverse a complex JSON
-structure whilst having live feedback. Whenever you're happy, hit
-=RET= and the results will be displayed to you in the buffer
-=*jq-json*=.
+Longer version: If you are working with complex nested JSON
+structures, you are probably familiar with [[https://stedolan.github.io/jq/][jq]] which is like sed for
+JSON data and great at what it does. However, being a command-line
+tool like sed, the feedback for writing queries and seeing their
+results is a discrete process and not live.
+
+When working with Emacs, we are used to good auto-completion and live
+feedback. Formerly, this was mostly done with static input, but with
+modern completion frameworks like [[https://github.com/abo-abo/swiper][Ivy]], this can be done with dynamic
+inputs, as well.
+
+counsel-jq is a package with which you can quickly test queries and
+traverse a complex JSON structure whilst having live feedback. Just
+call =M-x counsel-jq= in a buffer containing JSON, then start writing
+your =jq= query string and see the output appear live in the message
+area. Whenever you're happy, hit =RET= and the results will be
+displayed to you in the buffer =*jq-json*=.
 
 Demo:
 
