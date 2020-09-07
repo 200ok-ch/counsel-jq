@@ -11,6 +11,11 @@ JSON data and great at what it does. However, being a command-line
 tool like sed, the feedback for writing queries and seeing their
 results is a discrete process and not live.
 
+#+begin_quote
+Cool. That might even be a feature that would draw in new Emacs users!
+#+end_quote
+([[https://github.com/alphapapa][alphapapa]] during the [[https://github.com/melpa/melpa/pull/6527#issuecomment-551311397][melpa submission]])
+
 When working with Emacs, we are used to good auto-completion and live
 feedback. Formerly, this was mostly done with static input, but with
 modern completion frameworks like [[https://github.com/abo-abo/swiper][Ivy]], this can be done with dynamic
