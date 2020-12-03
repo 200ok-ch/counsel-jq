@@ -14,7 +14,8 @@
   "Call 'jq' with the QUERY with a default of '.'."
   (with-current-buffer
       ;; The user entered the `counsel-jq` query in the minibuffer.
-      ;; This expression uses the most recent buffer ivy-read was invoked from
+      ;; This expression uses the most recent buffer ivy-read was
+      ;; invoked from.
       (ivy-state-buffer ivy-last)
     (call-process-region
      (point-min)
