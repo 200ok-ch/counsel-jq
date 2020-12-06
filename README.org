@@ -31,3 +31,10 @@ displayed to you in the buffer =*jq-json*=.
 Demo:
 
 [[file:images/demo-counsel-jq.gif][./images/demo-counsel-jq.gif]]
+
+** Configuration
+
+By default, the resulting =*jq-json*= buffer will have the major mode
+=js-mode=, but that can be customized with the
+=counsel-jq-json-buffer-mode= variable if you prefer =json-mode=,
+=rsjx-mode= or any other mode.

@@ -9,7 +9,12 @@
 ;;; Code:
 
 (require 'swiper)
-(defvar jq-json-buffer-mode nil)
+
+(defcustom counsel-jq-json-buffer-mode 'js-mode
+  "Major mode for the resulting *jq-json* buffer."
+  :type '(function)
+  :require 'counsel-jq
+  :group 'counsel-jq)
 
 (defun counsel-jq-json (&optional query)
   "Call 'jq' with the QUERY with a default of '.'."
@@ -32,11 +37,7 @@
   "Wrapper function passing INPUT over to `counsel-jq-json'."
   (when (get-buffer "*jq-json*")
       (with-current-buffer "*jq-json*"
-        (if jq-json-buffer-mode
-            (funcall (intern jq-json-buffer-mode))
-          (if (version< emacs-version "27.1")
-              (js-mode)
-            (js-js2-mode)))
+        (funcall counsel-jq-json-buffer-mode)
         (erase-buffer)))
   (counsel-jq-json input)
   (split-string
