@@ -31,3 +31,9 @@ displayed to you in the buffer =*jq-json*=.
 Demo:
 
 [[file:images/demo-counsel-jq.gif][./images/demo-counsel-jq.gif]]
+
+** EmacsConf 2020 talk on =counsel-jq=
+
+On [2020-11-29 Sun], @munen gave a talk at EmacsConf 2020 introducing
+=counsel-jq=. There's a video recording with explanations and demos
+behind this complementary blog post: https://200ok.ch/posts/2020-11-30_emacsconf_traverse_complex_json_structures_with_live_feedback_with_counseljq.html
