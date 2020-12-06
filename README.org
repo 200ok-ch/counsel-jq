@@ -38,3 +38,5 @@ On [2020-11-29 Sun], [[https://github.com/munen/][Zen Monk Alain M. Lafon (@mune
 EmacsConf 2020 introducing =counsel-jq=. There's a video recording
 with explanations and demos behind this complementary blog post:
 https://200ok.ch/posts/2020-11-30_emacsconf_traverse_complex_json_structures_with_live_feedback_with_counseljq.html
+
+#+html: <p align="center"><a href="https://200ok.ch/posts/2020-11-30_emacsconf_traverse_complex_json_structures_with_live_feedback_with_counseljq.html"><img src="https://github.com/200ok-ch/counsel-jq/raw/master/images/emacsconf-2020-video-preview.png"/></a></p>
