@@ -10,6 +10,12 @@
 
 (require 'swiper)
 
+(defcustom counsel-jq-json-buffer-mode 'js-mode
+  "Major mode for the resulting *jq-json* buffer."
+  :type '(function)
+  :require 'counsel-jq
+  :group 'counsel-jq)
+
 (defun counsel-jq-json (&optional query)
   "Call 'jq' with the QUERY with a default of '.'."
   (with-current-buffer
@@ -31,6 +37,7 @@
   "Wrapper function passing INPUT over to `counsel-jq-json'."
   (when (get-buffer "*jq-json*")
       (with-current-buffer "*jq-json*"
+        (funcall counsel-jq-json-buffer-mode)
         (erase-buffer)))
   (counsel-jq-json input)
   (split-string

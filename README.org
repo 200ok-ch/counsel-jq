@@ -32,6 +32,13 @@ Demo:
 
 [[file:images/demo-counsel-jq.gif][./images/demo-counsel-jq.gif]]
 
+** Configuration
+
+By default, the resulting =*jq-json*= buffer will have the major mode
+=js-mode=, but that can be customized with the
+=counsel-jq-json-buffer-mode= variable if you prefer =json-mode=,
+=rsjx-mode= or any other mode.
+
 ** EmacsConf 2020 talk on =counsel-jq=
 
 On [2020-11-29 Sun], [[https://github.com/munen/][Zen Monk Alain M. Lafon (@munen)]] gave a talk at
