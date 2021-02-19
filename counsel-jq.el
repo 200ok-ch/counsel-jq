@@ -11,10 +11,16 @@
 (require 'swiper)
 
 (defcustom counsel-jq-json-buffer-mode 'js-mode
-  "Major mode for the resulting *jq-json* buffer."
+  "Major mode for the resulting `counsel-jq-buffer' buffer."
   :type '(function)
   :require 'counsel-jq
   :group 'counsel-jq)
+
+(defvar counsel-jq-command "jq"
+  "Command for `counsel-jq'.")
+
+(defvar counsel-jq-buffer "*jq-json*"
+  "Buffer for the `counsel-jq' query results.")
 
 (defun counsel-jq-json (&optional query)
   "Call 'jq' with the QUERY with a default of '.'."
@@ -26,33 +32,37 @@
     (call-process-region
      (point-min)
      (point-max)
-     "jq"
+     counsel-jq-command
      nil
-     "*jq-json*"
+     counsel-jq-buffer
      nil
      "-M"
      (or query "."))))
 
 (defun counsel-jq-query-function (input)
   "Wrapper function passing INPUT over to `counsel-jq-json'."
-  (when (get-buffer "*jq-json*")
-      (with-current-buffer "*jq-json*"
+  (when (get-buffer counsel-jq-buffer)
+      (with-current-buffer counsel-jq-buffer
         (funcall counsel-jq-json-buffer-mode)
         (erase-buffer)))
   (counsel-jq-json input)
-  (split-string
-   (with-current-buffer "*jq-json*"
-     (buffer-string))  "\n"))
+  (setq ivy--old-cands
+        (split-string
+         (replace-regexp-in-string
+          "\n$" ""
+          (with-current-buffer counsel-jq-buffer
+            (buffer-string))) "\n")))
 
 ;;;###autoload
 (defun counsel-jq ()
-  "Counsel interface for dynamically querying jq. Whenever you're happy with the query, hit RET and the results will be displayed to you in the buffer *jq-json*."
+  "Counsel interface for dynamically querying jq.
+Whenever you're happy with the query, hit RET and the results
+will be displayed to you in the buffer in `counsel-jq-buffer'."
   (interactive)
   (ivy-read "jq query: " #'counsel-jq-query-function
             :action #'(1
-                      ("s" (lambda (x)
-                             (split-window-below)
-                             (switch-to-buffer "*jq-json*"))
+                      ("s" (lambda (_)
+                             (display-buffer counsel-jq-buffer))
                              "show"))
             :initial-input "."
             :dynamic-collection t
