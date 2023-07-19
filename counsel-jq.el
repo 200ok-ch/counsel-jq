@@ -27,11 +27,11 @@
   (with-current-buffer
       ;; The user entered the `counsel-jq` query in the minibuffer.
       ;; This expression uses the most recent buffer ivy-read was
-      ;; invoked from.
+      ;; invoked from - either selected json region or whole buffer.
       (ivy-state-buffer ivy-last)
     (call-process-region
-     (point-min)
-     (point-max)
+     (if (region-active-p) (region-beginning) (point-min))
+     (if (region-active-p) (region-end) (point-max))
      counsel-jq-command
      nil
      counsel-jq-buffer
@@ -57,7 +57,8 @@
 (defun counsel-jq ()
   "Counsel interface for dynamically querying jq.
 Whenever you're happy with the query, hit RET and the results
-will be displayed to you in the buffer in `counsel-jq-buffer'."
+will be displayed to you in the buffer in `counsel-jq-buffer'.
+JSON is read from selected json region or whole buffer."
   (interactive)
   (ivy-read "jq query: " #'counsel-jq-query-function
             :action #'(1
